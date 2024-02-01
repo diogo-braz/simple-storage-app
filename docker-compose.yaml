@@ -8,7 +8,7 @@ services:
     environment:
       - POSTGRES_USER=docker
       - POSTGRES_PASSWORD=docker
-      - POSTGRES_DB=tunneling
+      - POSTGRES_DB=dev
     volumes:
       - postgres_data:/bitnami/postgresql
 
