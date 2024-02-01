@@ -5,6 +5,7 @@ import { r2 } from '../lib/cloudflare'
 import { z } from 'zod'
 import { PrismaClient } from '@prisma/client'
 import { randomUUID } from 'crypto';
+import { env } from '../env'
 
 const app = fastify()
 
@@ -23,7 +24,7 @@ app.post('/uploads', async (request) => {
   const signedUrl = await getSignedUrl(
     r2,
     new PutObjectCommand({
-      Bucket: 'tunneling-dev',
+      Bucket: env.CLOUDFLARE_BUCKET_NAME,
       Key: fileKey,
       ContentType: contentType,
     }),
@@ -57,7 +58,7 @@ app.get('/uploads/:id', async (request) => {
   const signedUrl = await getSignedUrl(
     r2,
     new GetObjectCommand({
-      Bucket: 'tunneling-dev',
+      Bucket: env.CLOUDFLARE_BUCKET_NAME,
       Key: file.key,
     }),
     { expiresIn: 600 }
