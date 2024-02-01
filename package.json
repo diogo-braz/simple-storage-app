@@ -1,7 +1,7 @@
 {
-  "name": "tunneling",
+  "name": "simple-storage-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "Very simple storage app",
   "main": "index.js",
   "scripts": {
     "dev": "tsx watch --env-file .env src/http/server.ts"
